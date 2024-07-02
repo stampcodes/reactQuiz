@@ -1,9 +1,13 @@
+import styles from "./QuizScreen.module.css";
+
 interface QuizScreenProps {
   question: string;
   answers: string[];
   correctAnswer: string;
   incorrectAnswers: string[];
-  selectedAnswer: string;
+  selectedAnswer: Object;
+  questionIndex: number;
+  onAnswerSelect: (questionIndex: number, answer: string) => void;
 }
 
 const QuizScreen = (props: QuizScreenProps) => {
@@ -16,7 +20,8 @@ const QuizScreen = (props: QuizScreenProps) => {
         {props.answers.map((answer, index) => (
           <li key={index}>
             <button
-              className={props.selectedAnswer === answer ? "selected" : ""}
+              className={props.selectedAnswer === answer ? styles.selected : ""}
+              onClick={() => props.onAnswerSelect(props.questionIndex, answer)}
             >
               {answer}
             </button>
