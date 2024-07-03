@@ -1,4 +1,4 @@
-# Quiz Application
+# Climate Awareness Quiz
 
 This project is a Quiz Application built using React and Vite. It provides a simple interface for users to take quizzes and view their scores.
 
