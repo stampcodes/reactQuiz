@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import StartScreen from "./components/StartScreen/StartScreen";
-import QuizData from "./components/QuizData/QuizData";
+import QuizData from "./data/QuizData/QuizData";
 import QuizScreen from "./components/QuizScreen/QuizScreen";
 
 type SelectedAnswer = {
