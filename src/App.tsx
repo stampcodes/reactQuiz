@@ -3,6 +3,7 @@ import StartScreen from "./components/StartScreen/StartScreen";
 import QuizData from "./data/QuizData/QuizData";
 import QuizScreen from "./components/QuizScreen/QuizScreen";
 import "./App.css";
+import FinalScreen from "./components/FinalScreen/FinalScreen";
 
 type SelectedAnswer = {
   [key: number]: string;
@@ -10,6 +11,7 @@ type SelectedAnswer = {
 
 const App: React.FC = () => {
   const [quizStarted, setQuizStarted] = useState<boolean>(false);
+  const [quizEnded, setQuizEnded] = useState<boolean>(false);
   const [selectedAnswer, setSelectedAnswer] = useState<SelectedAnswer>({});
   const [score, setScore] = useState<null | number>(null);
   const [shuffledQuizData, setShuffledQuizData] = useState<
@@ -68,35 +70,31 @@ const App: React.FC = () => {
       }
     });
     setScore(newScore);
+    setQuizEnded(true);
   }
 
   function handleRetryQuiz() {
     setQuizStarted(false);
+    setQuizEnded(false);
     setScore(null);
     setSelectedAnswer({});
   }
 
   return (
-    <>
-      <div className="app-container">
-        {quizStarted ? (
-          <div className="quiz-container">
-            {quizDataElement}
-            <button className="submit-button" onClick={handleSubmitQuiz}>
-              Submit Quiz
-            </button>
-            {score !== null && <h2 className="score">Your score is {score}</h2>}
-            {score !== null && (
-              <button className="retry-button" onClick={handleRetryQuiz}>
-                Retry Quiz!
-              </button>
-            )}
-          </div>
-        ) : (
-          <StartScreen setQuizStarted={setQuizStarted} />
-        )}
-      </div>
-    </>
+    <div className="app-container">
+      {!quizStarted && !quizEnded && (
+        <StartScreen setQuizStarted={setQuizStarted} />
+      )}
+      {quizStarted && !quizEnded && (
+        <div className="quiz-container">
+          {quizDataElement}
+          <button className="submit-button" onClick={handleSubmitQuiz}>
+            Submit Quiz
+          </button>
+        </div>
+      )}
+      {quizEnded && <FinalScreen score={score!} onRetry={handleRetryQuiz} />}
+    </div>
   );
 };
 
