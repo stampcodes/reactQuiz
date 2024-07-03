@@ -1,4 +1,16 @@
-export default {
+interface QuizItem {
+  id: number;
+  answers: string[];
+  correct_answer: string;
+  incorrect_answers: string[];
+  question: string;
+}
+
+interface QuizData {
+  data: QuizItem[];
+}
+
+const QuizData: QuizData = {
   data: [
     {
       id: 1,
@@ -126,3 +138,5 @@ export default {
     },
   ],
 };
+
+export default QuizData;

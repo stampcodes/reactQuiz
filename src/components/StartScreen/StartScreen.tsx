@@ -4,7 +4,7 @@ interface StartScreenProps {
   setQuizStarted: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const StartScreen = ({ setQuizStarted }: StartScreenProps) => {
+const StartScreen: React.FC<StartScreenProps> = ({ setQuizStarted }) => {
   function startQuiz() {
     setQuizStarted(true);
   }

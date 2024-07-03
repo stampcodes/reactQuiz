@@ -9,14 +9,20 @@ type SelectedAnswer = {
   [key: number]: string;
 };
 
+interface QuizItem {
+  id: number;
+  answers: string[];
+  correct_answer: string;
+  incorrect_answers: string[];
+  question: string;
+}
+
 const App: React.FC = () => {
   const [quizStarted, setQuizStarted] = useState<boolean>(false);
   const [quizEnded, setQuizEnded] = useState<boolean>(false);
   const [selectedAnswer, setSelectedAnswer] = useState<SelectedAnswer>({});
   const [score, setScore] = useState<null | number>(null);
-  const [shuffledQuizData, setShuffledQuizData] = useState<
-    typeof QuizData.data
-  >([]);
+  const [shuffledQuizData, setShuffledQuizData] = useState<QuizItem[]>([]);
 
   useEffect(() => {
     if (quizStarted) {
@@ -24,11 +30,11 @@ const App: React.FC = () => {
     }
   }, [quizStarted]);
 
-  function shuffleArray(array: any[]) {
+  function shuffleArray(array: any[]): any[] {
     return array.sort(() => Math.random() - 0.5);
   }
 
-  function shuffleAnswers(data: typeof QuizData.data) {
+  function shuffleAnswers(data: QuizItem[]): QuizItem[] {
     return data.map((item) => {
       const allAnswers = shuffleArray([
         ...item.incorrect_answers,

@@ -6,12 +6,12 @@ interface QuizScreenProps {
   questionNumber: number;
   correctAnswer: string;
   incorrectAnswers: string[];
-  selectedAnswer: Object;
+  selectedAnswer?: Object;
   questionIndex: number;
   onAnswerSelect: (questionIndex: number, answer: string) => void;
 }
 
-const QuizScreen = (props: QuizScreenProps) => {
+const QuizScreen: React.FC<QuizScreenProps> = (props) => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Question {props.questionNumber}</h2>
