@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import StartScreen from "./components/StartScreen/StartScreen";
 import QuizData from "./data/QuizData/QuizData";
 import QuizScreen from "./components/QuizScreen/QuizScreen";
+import "./App.css";
 
 type SelectedAnswer = {
   [key: number]: string;
 };
-
-type QuizDataType = typeof QuizData.data;
 
 const App: React.FC = () => {
   const [quizStarted, setQuizStarted] = useState<boolean>(false);
@@ -44,6 +42,7 @@ const App: React.FC = () => {
   const quizDataElement = shuffledQuizData.map((element, index) => (
     <QuizScreen
       key={element.id}
+      questionNumber={index + 1}
       correctAnswer={element.correct_answer}
       incorrectAnswers={element.incorrect_answers}
       question={element.question}
@@ -79,18 +78,24 @@ const App: React.FC = () => {
 
   return (
     <>
-      {quizStarted ? (
-        <>
-          {quizDataElement}
-          <button onClick={handleSubmitQuiz}>Submit Quiz</button>
-          {score !== null && <h2>Your score is {score}</h2>}
-          {score !== null && (
-            <button onClick={handleRetryQuiz}>Rifai il Quiz!</button>
-          )}
-        </>
-      ) : (
-        <StartScreen setQuizStarted={setQuizStarted} />
-      )}
+      <div className="app-container">
+        {quizStarted ? (
+          <div className="quiz-container">
+            {quizDataElement}
+            <button className="submit-button" onClick={handleSubmitQuiz}>
+              Submit Quiz
+            </button>
+            {score !== null && <h2 className="score">Your score is {score}</h2>}
+            {score !== null && (
+              <button className="retry-button" onClick={handleRetryQuiz}>
+                Retry Quiz!
+              </button>
+            )}
+          </div>
+        ) : (
+          <StartScreen setQuizStarted={setQuizStarted} />
+        )}
+      </div>
     </>
   );
 };

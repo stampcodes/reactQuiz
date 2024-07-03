@@ -3,6 +3,7 @@ import styles from "./QuizScreen.module.css";
 interface QuizScreenProps {
   question: string;
   answers: string[];
+  questionNumber: number;
   correctAnswer: string;
   incorrectAnswers: string[];
   selectedAnswer: Object;
@@ -12,15 +13,16 @@ interface QuizScreenProps {
 
 const QuizScreen = (props: QuizScreenProps) => {
   return (
-    <>
-      <h2>Question</h2>
-      <h3>{props.question}</h3>
-      <h2>Answers</h2>
-      <ul>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Question {props.questionNumber}</h2>
+      <h3 className={styles.question}>{props.question}</h3>
+      <ul className={styles.answerList}>
         {props.answers.map((answer, index) => (
-          <li key={index}>
+          <li key={index} className={styles.answerItem}>
             <button
-              className={props.selectedAnswer === answer ? styles.selected : ""}
+              className={`${styles.answerButton} ${
+                props.selectedAnswer === answer ? styles.selected : ""
+              }`}
               onClick={() => props.onAnswerSelect(props.questionIndex, answer)}
             >
               {answer}
@@ -28,7 +30,8 @@ const QuizScreen = (props: QuizScreenProps) => {
           </li>
         ))}
       </ul>
-    </>
+      <div className={styles.divider}></div>
+    </div>
   );
 };
 
