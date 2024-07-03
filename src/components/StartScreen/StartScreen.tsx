@@ -1,3 +1,5 @@
+import styles from "./StartScreen.module.css";
+
 interface StartScreenProps {
   setQuizStarted: React.Dispatch<React.SetStateAction<boolean>>;
 }
