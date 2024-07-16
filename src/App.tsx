@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import StartScreen from "./components/StartScreen/StartScreen";
-import QuizData from "./data/QuizData/QuizData";
+import quizData from "./data/QuizData/quizData";
 import QuizScreen from "./components/QuizScreen/QuizScreen";
 import "./App.css";
 import FinalScreen from "./components/FinalScreen/FinalScreen";
@@ -12,8 +12,8 @@ type SelectedAnswer = {
 interface QuizItem {
   id: number;
   answers: string[];
-  correct_answer: string;
-  incorrect_answers: string[];
+  correctAnswer: string;
+  incorrectAnswers: string[];
   question: string;
 }
 
@@ -26,7 +26,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (quizStarted) {
-      setShuffledQuizData(shuffleAnswers(QuizData.data));
+      setShuffledQuizData(shuffleAnswers(quizData.data));
     }
   }, [quizStarted]);
 
@@ -37,8 +37,8 @@ const App: React.FC = () => {
   function shuffleAnswers(data: QuizItem[]): QuizItem[] {
     return data.map((item) => {
       const allAnswers = shuffleArray([
-        ...item.incorrect_answers,
-        item.correct_answer,
+        ...item.incorrectAnswers,
+        item.correctAnswer,
       ]);
       return {
         ...item,
@@ -51,8 +51,8 @@ const App: React.FC = () => {
     <QuizScreen
       key={element.id}
       questionNumber={index + 1}
-      correctAnswer={element.correct_answer}
-      incorrectAnswers={element.incorrect_answers}
+      correctAnswer={element.correctAnswer}
+      incorrectAnswers={element.incorrectAnswers}
       question={element.question}
       answers={element.answers}
       onAnswerSelect={handleAnswerSelect}
@@ -71,7 +71,7 @@ const App: React.FC = () => {
   function handleSubmitQuiz() {
     let newScore = 0;
     shuffledQuizData.forEach((answer, index) => {
-      if (selectedAnswer[index] === answer.correct_answer) {
+      if (selectedAnswer[index] === answer.correctAnswer) {
         newScore += 1;
       }
     });

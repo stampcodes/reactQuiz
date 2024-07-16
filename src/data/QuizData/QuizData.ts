@@ -1,16 +1,16 @@
 interface QuizItem {
   id: number;
   answers: string[];
-  correct_answer: string;
-  incorrect_answers: string[];
+  correctAnswer: string;
+  incorrectAnswers: string[];
   question: string;
 }
 
-interface QuizData {
+interface quizData {
   data: QuizItem[];
 }
 
-const QuizData: QuizData = {
+const quizData: quizData = {
   data: [
     {
       id: 1,
@@ -20,8 +20,8 @@ const QuizData: QuizData = {
         "Pollution decrease",
         "Increase in freshwater reserves",
       ],
-      correct_answer: "Sea level rise",
-      incorrect_answers: [
+      correctAnswer: "Sea level rise",
+      incorrectAnswers: [
         "Biodiversity growth",
         "Pollution decrease",
         "Increase in freshwater reserves",
@@ -31,16 +31,16 @@ const QuizData: QuizData = {
     {
       id: 2,
       answers: ["Carbon dioxide", "Nitrogen", "Oxygen", "Argon"],
-      correct_answer: "Carbon dioxide",
-      incorrect_answers: ["Nitrogen", "Oxygen", "Argon"],
+      correctAnswer: "Carbon dioxide",
+      incorrectAnswers: ["Nitrogen", "Oxygen", "Argon"],
       question:
         "Which gas is primarily responsible for the anthropogenic greenhouse effect?",
     },
     {
       id: 3,
       answers: ["50 years", "100 years", "200 years", "300 years"],
-      correct_answer: "100 years",
-      incorrect_answers: ["50 years", "200 years", "300 years"],
+      correctAnswer: "100 years",
+      incorrectAnswers: ["50 years", "200 years", "300 years"],
       question: "How long can carbon dioxide remain in the atmosphere?",
     },
     {
@@ -51,8 +51,8 @@ const QuizData: QuizData = {
         "Reduction of storms",
         "Increase in tropical forests",
       ],
-      correct_answer: "Glacier melting",
-      incorrect_answers: [
+      correctAnswer: "Glacier melting",
+      incorrectAnswers: [
         "Increase in marine biodiversity",
         "Reduction of storms",
         "Increase in tropical forests",
@@ -63,8 +63,8 @@ const QuizData: QuizData = {
     {
       id: 5,
       answers: ["Particulate matter", "Radon", "Oxygen", "Methane"],
-      correct_answer: "Particulate matter",
-      incorrect_answers: ["Radon", "Oxygen", "Methane"],
+      correctAnswer: "Particulate matter",
+      incorrectAnswers: ["Radon", "Oxygen", "Methane"],
       question:
         "Which of the following air pollutants can cause respiratory and cardiac problems?",
     },
@@ -76,16 +76,16 @@ const QuizData: QuizData = {
         "Agroforestry",
         "Reforestation",
       ],
-      correct_answer: "Deforestation",
-      incorrect_answers: ["Afforestation", "Agroforestry", "Reforestation"],
+      correctAnswer: "Deforestation",
+      incorrectAnswers: ["Afforestation", "Agroforestry", "Reforestation"],
       question:
         "What term describes the massive removal of trees to make space for other activities?",
     },
     {
       id: 7,
       answers: ["Mitigation", "Adaptation", "Resilience", "Pollution"],
-      correct_answer: "Pollution",
-      incorrect_answers: ["Mitigation", "Adaptation", "Resilience"],
+      correctAnswer: "Pollution",
+      incorrectAnswers: ["Mitigation", "Adaptation", "Resilience"],
       question:
         "Which of these terms is not a strategy to address climate change?",
     },
@@ -97,8 +97,8 @@ const QuizData: QuizData = {
         "Nuclear energy",
         "Bioenergy",
       ],
-      correct_answer: "Fossil fuels",
-      incorrect_answers: ["Renewable energy", "Nuclear energy", "Bioenergy"],
+      correctAnswer: "Fossil fuels",
+      incorrectAnswers: ["Renewable energy", "Nuclear energy", "Bioenergy"],
       question:
         "Which energy source is considered one of the main causes of increased greenhouse gases?",
     },
@@ -110,8 +110,8 @@ const QuizData: QuizData = {
         "Save, Reuse, Reduce",
         "Save, Reorder, Reduce",
       ],
-      correct_answer: "Reduce, Reuse, Recycle",
-      incorrect_answers: [
+      correctAnswer: "Reduce, Reuse, Recycle",
+      incorrectAnswers: [
         "Reduce, Reorder, Recycle",
         "Save, Reuse, Reduce",
         "Save, Reorder, Reduce",
@@ -127,8 +127,8 @@ const QuizData: QuizData = {
         "Montreal Protocol",
         "Stockholm Agreement",
       ],
-      correct_answer: "Paris Agreement",
-      incorrect_answers: [
+      correctAnswer: "Paris Agreement",
+      incorrectAnswers: [
         "Kyoto Protocol",
         "Montreal Protocol",
         "Stockholm Agreement",
@@ -139,4 +139,4 @@ const QuizData: QuizData = {
   ],
 };
 
-export default QuizData;
+export default quizData;
