@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import StartScreen from "./components/StartScreen/StartScreen";
-import quizData from "./data/QuizData/quizData";
+import quizData from "./data/quizData/quizData";
 import QuizScreen from "./components/QuizScreen/QuizScreen";
 import "./App.css";
 import FinalScreen from "./components/FinalScreen/FinalScreen";
